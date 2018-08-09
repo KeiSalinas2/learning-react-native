@@ -12,7 +12,7 @@ function Suggestion(props) {
       <View style={styles.left}>
         <Image
           style={styles.cover}
-          source={require('../../Assets/Images/logo.png')}
+          source={require('assets/Images/logo.png')}
         />
         <View style={styles.genre}>
           <Text style={styles.genreText}>Acción</Text>
