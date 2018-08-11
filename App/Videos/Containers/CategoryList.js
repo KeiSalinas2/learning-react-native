@@ -4,8 +4,9 @@ import {
   FlatList
 } from 'react-native';
 import Empty from '../Components/Empty';
-import Separator from '../Components/VerticalDivider';
+import Separator from '../../Sections/Components/HorizontalDivider';
 import Suggestion from '../Components/Suggestion';
+import Layout from '../Components/CategoryListLayout';
 
 class CategoryList extends Component {
   keyExtractor = item => item.id.toString()
@@ -18,14 +19,18 @@ class CategoryList extends Component {
   }
   render() {
     return (
-      <FlatList
-        horizontal
-        keyExtractor={this.keyExtractor}
-        data={this.props.list}
-        ListEmptyComponent={this.renderEmtpy}
-        ItemSeparatorComponent={this.itemSeparator}
-        renderItem={this.renderItem}
-      />
+      <Layout
+        title="Categorias"
+        >
+        <FlatList
+          horizontal
+          keyExtractor={this.keyExtractor}
+          data={this.props.list}
+          ListEmptyComponent={this.renderEmtpy}
+          ItemSeparatorComponent={this.itemSeparator}
+          renderItem={this.renderItem}
+        />
+      </Layout>
     )
   }
 }
