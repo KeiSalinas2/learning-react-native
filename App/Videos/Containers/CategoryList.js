@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import Empty from '../Components/Empty';
 import Separator from '../../Sections/Components/HorizontalDivider';
-import Suggestion from '../Components/Suggestion';
+import Category from '../Components/Category';
 import Layout from '../Components/CategoryListLayout';
 
 class CategoryList extends Component {
@@ -14,7 +14,7 @@ class CategoryList extends Component {
   itemSeparator = () => <Separator />
   renderItem = ({item}) => {
     return (
-      <Suggestion {...item}/>
+      <Category {...item}/>
     )
   }
   render() {
