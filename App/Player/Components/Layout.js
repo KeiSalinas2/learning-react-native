@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 
-function Layout(props){
+function Layout(props) {
   return (
     <View style={styles.container}>
       <View style={styles.video}>
@@ -18,14 +18,14 @@ function Layout(props){
           props.loader
         }
       </View>
+      {props.controls}
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    position: 'relative',
-    paddingTop: '56.25%'
+    paddingTop: '56.25%',
   },
   video: {
     position: 'absolute',
@@ -38,12 +38,12 @@ const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
     left: 0,
-    right: 0,
     top: 0,
     bottom: 0,
+    right: 0,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   }
 })
 
-export default Layout
+export default Layout;
