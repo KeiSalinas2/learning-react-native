@@ -6,30 +6,38 @@ import {
 import Home from './App/Screens/Containers/Home';
 import Header from './App/Sections/Components/Header';
 import SuggestionList from './App/Videos/Containers/SuggestionList';
+import Loader from"./App/Loader/Components/Loader";
 import API from './App/Utils/Api/Api';
 
 type Props = {};
-type Props = {};
+
 export default class App extends Component<Props> {
+
   state = {
     suggestionList: [],
+    loading: true
   }
+
   async componentDidMount() {
     const movies = await API.getSuggestion(10);
     console.log(movies);
     this.setState({
       suggestionList: movies,
+      loading: false
     })
   }
+
   render() {
     return (
       <Home>
         <Header />
         <Text>buscador</Text>
         <Text>categorías</Text>
-        <SuggestionList
-          list={this.state.suggestionList}
-        />
+        {this.state.loading ? (
+          <Loader />
+        ) : (
+          <SuggestionList list={this.state.suggestionList} />
+        )}
       </Home>
     );
   }
