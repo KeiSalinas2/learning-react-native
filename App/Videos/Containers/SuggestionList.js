@@ -9,6 +9,7 @@ import Divider from '../Components/VerticalDivider';
 import Suggestion from '../Components/Suggestion';
 
 class SuggestionList extends Component {
+  keyExtractor = item => item.id.toString()
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />
   itemSeparator = () => <Divider />
   renderItem = ({item}) => {
@@ -17,22 +18,13 @@ class SuggestionList extends Component {
     )
   }
   render() {
-    const list = [
-      {
-        title: 'Avengers',
-        key: '1',
-      },
-      {
-        title: 'Pokemon',
-        key: '2'
-      }
-    ]
     return (
       <Layout
         title="Recomendado para ti"
         >
         <FlatList
-          data={list}
+          keyExtractor={this.keyExtractor}
+          data={this.props.list}
           ListEmptyComponent={this.renderEmtpy}
           ItemSeparatorComponent={this.itemSeparator}
           renderItem={this.renderItem}
