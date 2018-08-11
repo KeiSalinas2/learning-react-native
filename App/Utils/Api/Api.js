@@ -10,6 +10,7 @@ class Api {
 
   async getMovies() {
     const query = await fetch(`${BASE_API}list_movies.json?`);
+    console.log('aaaaaaaaa', query)
     const { data } = await query.json();
     return data.movies
   }
