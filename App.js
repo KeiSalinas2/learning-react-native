@@ -13,7 +13,9 @@ import API from './App/Utils/Api/Api';
 import Player from './App/Player/Containers/Player';
 
 import { Provider } from 'react-redux';
-import store from './App/Redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { Store, Persistor } from './App/Redux/Store';
 
 type Props = {};
 
@@ -22,7 +24,7 @@ export default class App extends Component<Props> {
   async componentDidMount() {
 
     const categoryList = await API.getMovies();
-    store.dispatch({
+    Store.dispatch({
       type: 'SET_CATEGORY_LIST',
       payload: {
         categoryList
@@ -30,7 +32,7 @@ export default class App extends Component<Props> {
     })
 
     const suggestionList = await API.getSuggestion(10);
-    store.dispatch({
+    Store.dispatch({
       type: 'SET_SEGGESTION_LIST',
       payload: {
         suggestionList
@@ -42,14 +44,19 @@ export default class App extends Component<Props> {
   render() {
     return (
       <Provider
-        store={store}
+        store={Store}
       >
-        <Home>
-          <Header />
-          <Player />
-          <CategoryList />
-          <SuggestionList />
-        </Home>
+         <PersistGate
+          loading={<Loader />}
+          persistor={Persistor}
+        >
+          <Home>
+            <Header />
+            <Player />
+            <CategoryList />
+            <SuggestionList />
+          </Home>
+        </PersistGate>
       </Provider>
     );
   }
