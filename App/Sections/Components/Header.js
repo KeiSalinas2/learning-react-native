@@ -16,6 +16,9 @@ function Header(props) {
             source={require('../../Assets/Images/logo.png')}
             style={styles.logo}
           />
+          <View style={styles.right}>
+            {props.children}
+          </View>
         </View>
       </SafeAreaView>
     </View>
@@ -32,6 +35,11 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 10,
     flexDirection: 'row',
+  },
+  right: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   }
 })
 
