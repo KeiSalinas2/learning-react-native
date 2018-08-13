@@ -8,6 +8,8 @@ import Empty from '../Components/Empty';
 import Divider from '../Components/VerticalDivider';
 import Suggestion from '../Components/Suggestion';
 
+import { connect } from 'react-redux';
+
 class SuggestionList extends Component {
   keyExtractor = item => item.id.toString()
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />
@@ -34,4 +36,10 @@ class SuggestionList extends Component {
   }
 }
 
-export default SuggestionList
+const mapStateToProps = state => {
+  return {
+    list: state.suggestionList
+  }
+}
+
+export default connect (mapStateToProps) (SuggestionList);
