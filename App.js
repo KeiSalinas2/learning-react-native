@@ -12,6 +12,9 @@ import Loader from"./App/Loader/Components/Loader";
 import API from './App/Utils/Api/Api';
 import Player from './App/Player/Containers/Player';
 
+import { Provider } from 'react-redux';
+import store from './App/Redux/Store';
+
 type Props = {};
 
 export default class App extends Component<Props> {
@@ -36,18 +39,22 @@ export default class App extends Component<Props> {
 
   render() {
     return (
-      <Home>
-        <Header />
-        <Player />
-        <CategoryList
-          list={this.state.categoryList}
-        />
-        {this.state.loading ? (
-          <Loader />
-        ) : (
-          <SuggestionList list={this.state.suggestionList} />
-        )}
-      </Home>
+      <Provider
+        store={store}
+      >
+        <Home>
+          <Header />
+          <Player />
+          <CategoryList
+            list={this.state.categoryList}
+          />
+          {this.state.loading ? (
+            <Loader />
+          ) : (
+            <SuggestionList list={this.state.suggestionList} />
+          )}
+        </Home>
+      </Provider>
     );
   }
 }

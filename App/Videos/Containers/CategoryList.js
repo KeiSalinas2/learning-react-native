@@ -8,6 +8,8 @@ import Separator from '../../Sections/Components/HorizontalDivider';
 import Category from '../Components/Category';
 import Layout from '../Components/CategoryListLayout';
 
+import { connect } from 'react-redux';
+
 class CategoryList extends Component {
   keyExtractor = item => item.id.toString()
   renderEmtpy = () => <Empty text="No hay sugerencias :(" />
@@ -35,4 +37,9 @@ class CategoryList extends Component {
   }
 }
 
-export default CategoryList;
+function mapStateToProps(state) {
+  debugger
+  return {}
+}
+
+export default connect (mapStateToProps) (CategoryList);
