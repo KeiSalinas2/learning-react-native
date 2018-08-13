@@ -1,18 +1,36 @@
-import React from'react'
+import React from 'react';
 import {
-    View,
-    ActivityIndicator,
-    StyleSheet
-} from'react-native'
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+} from 'react-native';
 
-const Loader = props => (
-  <View style = { styles.container }>
-    <ActivityIndicator size='large'/>
-  </View>
-)
+function Loader(props) {
+  return (
+    <View style={styles.container}>
+      <Image
+        source={require('../../Assets/Images/logo.png')}
+        style={styles.logo}
+      />
+      <ActivityIndicator />
+    </View>
+  )
+}
+
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 10
+    flex: 1,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 200,
+    height: 80,
+    resizeMode: 'contain',
+    marginBottom: 10,
   }
 })
 
