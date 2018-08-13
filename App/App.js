@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 
 import Home from './Screens/Containers/Home';
+import Movie from './Screens/Containers/Movie';
 import Header from './Sections/Components/Header';
 import SuggestionList from './Videos/Containers/SuggestionList';
 import CategoryList from './Videos/Containers/CategoryList';
@@ -33,10 +34,12 @@ class AppLayout extends Component {
     })
   }
   render() {
+    if (this.props.selectedMovie) {
+      return <Movie />
+    }
     return (
       <Home>
         <Header />
-        <Player />
         <Text>Buscador</Text>
         <CategoryList />
         <SuggestionList />
@@ -45,4 +48,10 @@ class AppLayout extends Component {
   }
 }
 
-export default connect(null)(AppLayout);
+function mapStateToProps(state) {
+  return {
+    selectedMovie: state.selectedMovie,
+  }
+}
+
+export default connect(mapStateToProps) (AppLayout);
