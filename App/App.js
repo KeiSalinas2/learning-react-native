@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import Home from './Screens/Containers/Home';
 import Movie from './Screens/Containers/Movie';
 import Header from './Sections/Components/Header';
+import Search from './Sections/Containers/Search';
 import SuggestionList from './Videos/Containers/SuggestionList';
 import CategoryList from './Videos/Containers/CategoryList';
 import Loader from"./Loader/Components/Loader";
@@ -40,7 +41,7 @@ class AppLayout extends Component {
     return (
       <Home>
         <Header />
-        <Text>Buscador</Text>
+        <Search />
         <CategoryList />
         <SuggestionList />
       </Home>
